@@ -2,3 +2,4 @@ download_NPR/data
 download_NPR/nohup.out
 download_NPR/shell_command/download_mp3.log
 download_NPR/shell_command/.download_mp3.sh.un~
+download_NPR/shell_command/wlc_upload_video.log
