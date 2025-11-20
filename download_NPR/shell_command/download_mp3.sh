@@ -119,20 +119,20 @@ echo "dowload success, the mp3 file original name is $download_mp3_original_name
 
 md5_flag_new=`md5sum $folder_voice_tmp"/"$download_mp3_original_name | awk '{print $1}'`
 echo "the new mp3 md5 flag is $md5_flag_new"
-md5_flag_old=`cat /root/Auto_Download_NPR/download_NPR/data/tmp/md5.txt | awk '{print $1}'`
+md5_flag_old=`cat /root/Auto_Download_From_NPR/download_NPR/data/tmp/md5.txt | awk '{print $1}'`
 echo "the old mp3 md5 flag is $md5_flag_old"
 
 mp3_result=$folder_voice"/NPR_"$NPR_MP3_D"_"$NPR_MP3_H"00_UTC.mp3"
 mp4_result=$folder_video"/English_Study_"$NPR_MP3_D"_"$NPR_MP3_H"00_UTC.mp4"
 
 if [[ -z $md5_flag_old ]];then
-	`mv /root/Auto_Download_NPR/download_NPR/data/tmp/tmp_voice/$download_mp3_original_name $mp3_result`
-	`echo $md5_flag_new >/root/Auto_Download_NPR/download_NPR/data/tmp/md5.txt`
-	`ffmpeg -loop 1 -framerate 1 -i /root/Auto_Download_NPR/download_NPR/data/picture/npr_1.png -i $mp3_result -map 0:v -map 1:a -r 10 -b:a 128K -shortest $mp4_result`
+	`mv /root/Auto_Download_From_NPR/download_NPR/data/tmp/tmp_voice/$download_mp3_original_name $mp3_result`
+	`echo $md5_flag_new >/root/Auto_Download_From_NPR/download_NPR/data/tmp/md5.txt`
+	`ffmpeg -loop 1 -framerate 1 -i /root/Auto_Download_From_NPR/download_NPR/data/picture/npr_1.png -i $mp3_result -map 0:v -map 1:a -r 10 -b:a 128K -shortest $mp4_result`
 else
 	if [[ $md5_flag_new != $md5_flag_old ]];then
-        `mv /root/Auto_Download_NPR/download_NPR/data/tmp/tmp_voice/$download_mp3_original_name $mp3_result`
-		`echo $md5_flag_new >/root/Auto_Download_NPR/download_NPR/data/tmp/md5.txt`
-        `ffmpeg -loop 1 -framerate 1 -i /root/Auto_Download_NPR/download_NPR/data/picture/npr_1.png -i $mp3_result -map 0:v -map 1:a -r 10 -b:a 128K -shortest $mp4_result`
+        `mv /root/Auto_Download_From_NPR/download_NPR/data/tmp/tmp_voice/$download_mp3_original_name $mp3_result`
+		`echo $md5_flag_new >/root/Auto_Download_From_NPR/download_NPR/data/tmp/md5.txt`
+        `ffmpeg -loop 1 -framerate 1 -i /root/Auto_Download_From_NPR/download_NPR/data/picture/npr_1.png -i $mp3_result -map 0:v -map 1:a -r 10 -b:a 128K -shortest $mp4_result`
 	fi
 fi
